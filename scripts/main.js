@@ -1,7 +1,29 @@
 // подключаем модули
-import { initWebGL } from './webgl.js';
+import { initWebGL } from './map-webgl.js'; // не забудь, что мы переименовали
 import { state, initMapEvents, fitToScreen, zoomAt, flyTo } from './map.js';
 import { initBackground } from './background.js';
+
+// --- ЗАГРУЗКА КОНФИГА ---
+async function loadMapConfig() {
+  try {
+    const res = await fetch('config.json');
+    const config = await res.json();
+    
+    // Обновляем заголовок вкладки
+    document.title = config.pageTitle + " — Карта";
+    
+    // Обновляем плашку в левом нижнем углу
+    const creditsTitle = document.getElementById('map-credits-title');
+    if (creditsTitle) creditsTitle.textContent = `${config.siteName} ${config.version}`;
+    
+    const creditsAuthor = document.getElementById('map-credits-author');
+    if (creditsAuthor) creditsAuthor.textContent = config.authorName;
+
+  } catch (error) {
+    console.error("Не удалось загрузить config.json для карты", error);
+  }
+}
+loadMapConfig();
 
 // --- КОНФИГИ ---
 const SHADER_CONFIG = {

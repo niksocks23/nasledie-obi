@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title id="page-title">Загрузка карты...</title> <!-- Сюда вставится title -->
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="css-styles/resetBrowserStyles.css">
+    <link rel="stylesheet" href="css-styles/map-style.css">
+</head>
+<body>
+    <!-- Контейнер для тултипа -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <div id="app">
+        <!-- Кнопка возврата на главную -->
+        <a href="index.html" class="back-to-home">← На главную</a>
+
+        <div id="map-container">
+        <div id="map-wrapper">
+            <canvas id="map-canvas" width="1536" height="1752"></canvas>
+            <div id="markers"></div>
+        </div>
+        </div>
+
+        <!-- ЛЕГЕНДА И ПОИСК (сюда добавили кнопку На главную) -->
+        <div id="legend" class="panel">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Поиск мест..." autocomplete="off">
+                <div id="search-results"></div>
+            </div>
+
+            <div class="legend-title">Категории</div>
+            <div class="legend-items" id="legend-items"></div>
+        </div>
+
+        <div id="info-panel" class="panel hidden" role="dialog" aria-label="Информация о месте">
+            <button class="close-btn" id="close-btn" aria-label="Закрыть">×</button>
+            
+            <img id="info-img" class="info-img" alt="">
+            <div class="info-category" id="info-category"></div>
+            <h2 id="info-name"></h2>
+            <div id="info-description" class="info-description"></div>
+
+            <div class="info-footer">
+                <div class="info-qr-block">
+                    <div class="qr-label">QR-код</div>
+                    <img id="info-qr" class="info-qr" alt="QR">
+                </div>
+                <a id="info-link" class="info-link" target="_blank" rel="noopener">Подробнее →</a>
+            </div>
+        </div>
+
+        <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМ -->
+        <div id="theme-switcher" class="panel">
+            <button class="theme-btn" data-theme="auto" title="Как в системе">
+                <img src="images/theme/auto.png" alt="Авто">
+            </button>
+            <button class="theme-btn" data-theme="light" title="Светлая">
+                <img src="images/theme/light.png" alt="Светлая">
+            </button>
+            <button class="theme-btn" data-theme="dark" title="Темная">
+                <img src="images/theme/dark.png" alt="Темная">
+            </button>
+        </div>
+
+        <!-- ПОДПИСЬ ПРОЕКТА (добавили id) -->
+        <div id="credits" class="panel">
+            <div class="credits-title" id="map-credits-title">StoryMap-Web v0.08</div>
+            <div class="credits-author" id="map-credits-author">Chernika</div>
+        </div>
+
+        <div id="zoom-controls" class="panel">
+            <button id="zoom-in" aria-label="Приблизить">+</button>
+            <button id="zoom-out" aria-label="Отдалить">−</button>
+            <button id="zoom-fit" aria-label="Вписать">⤢</button>
+        </div>
+    </div>
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

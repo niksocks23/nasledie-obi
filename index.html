@@ -2,75 +2,137 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>StoryMap Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Загрузка...</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="css-styles/resetBrowserStyles.css">
-    <link rel="stylesheet" href="css-styles/style.css">
+    <link rel="stylesheet" href="css-styles/index-style.css">
 </head>
 <body>
-    <!-- Контейнер для тултипа -->
-    <div id="tooltip" class="tooltip"></div>
-
-    <div id="app">
-        <div id="map-container">
-        <div id="map-wrapper">
-            <canvas id="map-canvas" width="1536" height="1752"></canvas>
-            <div id="markers"></div>
+    <!-- Шапка сайта -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="images/logo-small.png" alt="Логотип" class="nav-logo">
+            <span id="site-name">...</span>
         </div>
-        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Главная</a>
+            <a href="#features">Возможности</a>
+            <a href="#about">О проекте</a>
+            <a href="map.html" class="btn-nav">Перейти к карте →</a>
+        </nav>
+    </header>
 
-        <div id="legend" class="panel">
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Поиск мест..." autocomplete="off">
-                <div id="search-results"></div>
+    <!-- Главный экран -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <canvas id="hero-shader"></canvas>
+                <div class="badge">Цифровой путеводитель по Сибири</div>
+                <h1>Наследие <br>Великой Реки</h1>
+                <p>Добро пожаловать в «Наследие Оби» — интерактивный атлас культурных и исторических сокровищ Обь-Иртышского бассейна. От древних кремлей до современных арт-объектов: исследуйте историю края в удобном цифровом формате.</p>
+                <a href="map.html" class="btn-primary">Открыть интерактивную карту</a>
             </div>
-
-            <div class="legend-title">Категории</div>
-            <div class="legend-items" id="legend-items"></div>
-        </div>
-
-        <div id="info-panel" class="panel hidden" role="dialog" aria-label="Информация о месте">
-            <button class="close-btn" id="close-btn" aria-label="Закрыть">×</button>
             
-            <img id="info-img" class="info-img" alt="">
-            <div class="info-category" id="info-category"></div>
-            <h2 id="info-name"></h2>
-            <div id="info-description" class="info-description"></div>
-
-            <div class="info-footer">
-                <div class="info-qr-block">
-                    <div class="qr-label">QR-код</div>
-                    <img id="info-qr" class="info-qr" alt="QR">
+            <div class="hero-visual">
+                <div class="image-slider" id="image-slider">
+                    <!-- Сюда JS будет вставлять картинки -->
                 </div>
-                <a id="info-link" class="info-link" target="_blank" rel="noopener">Подробнее →</a>
             </div>
-        </div>
+        </section>
 
-        <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМ -->
-        <div id="theme-switcher" class="panel">
-            <button class="theme-btn" data-theme="auto" title="Как в системе">
-                <img src="images/theme/auto.png" alt="Авто">
-            </button>
-            <button class="theme-btn" data-theme="light" title="Светлая">
-                <img src="images/theme/light.png" alt="Светлая">
-            </button>
-            <button class="theme-btn" data-theme="dark" title="Темная">
-                <img src="images/theme/dark.png" alt="Темная">
-            </button>
-        </div>
+        <!-- ... остальной HTML без изменений ... -->
+        <section class="stats-section">
+            <div class="stat-box">
+                <span class="stat-number" id="marker-count">...</span>
+                <span class="stat-label">Объектов наследия</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Исторические категории</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Доступность с любых устройств</span>
+            </div>
+        </section>
 
-        <div id="credits" class="panel">
-            <div class="credits-title">StoryMap-Web v0.08</div>
-            <div class="credits-author">Chernika</div>
-        </div>
+        <section id="features" class="section-container">
+            <div class="section-header">
+                <h2>Технологии для культуры</h2>
+                <p>Как современные веб-решения помогают изучать историю.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🌊</div>
+                    <h3>Живая карта</h3>
+                    <p>Края интерактивной карты плавно омываются «водой» благодаря шейдерам WebGL. Это создает уникальную атмосферу и погружает в географию Обского бассейна.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🧭</div>
+                    <h3>Быстрый ориентир</h3>
+                    <p>Умный поиск и плавный перелет (Fly-To) к любой точке. Просто введите название — и карта сама приблизит нужный памятник архитектуры.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📜</div>
+                    <h3>QR-гид</h3>
+                    <p>Каждая точка оснащена подробным описанием, фотографией и QR-кодом для быстрого доступа к полной исторической справке.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔗</div>
+                    <h3>Поделиться открытием</h3>
+                    <p>Нашли уникальный памятник? Ссылка на него сохраняется в адресной строке. Отправьте ее другу, и у него сразу откроется нужная локация.</p>
+                </div>
+            </div>
+        </section>
 
-        <div id="zoom-controls" class="panel">
-            <button id="zoom-in" aria-label="Приблизить">+</button>
-            <button id="zoom-out" aria-label="Отдалить">−</button>
-            <button id="zoom-fit" aria-label="Вписать">⤢</button>
-        </div>
-    </div>
-    <script type="module" src="scripts/main.js"></script>
+        <section id="about" class="section-container bg-alt">
+            <div class="section-header">
+                <h2>Мост между прошлым и будущим</h2>
+                <p>Обь-Иртышский бассейн — это колыбель сибирской культуры, объединяющая десятки городов и народов.</p>
+            </div>
+            <div class="text-content">
+                <p>Долгое время информация о величественных соборах, уникальных памятниках деревянного зодчества и инженерных шедеврах Сибири была разбросана по архивам и путеводителям. Мы решили собрать это культурное богатство в единую цифровую экосистему.</p>
+                <p>«Наследие Оби» — это не просто карта. Это современный инструмент для туристов, краеведов и всех, кто неравнодушен к истории. Мы используем технологии WebGL и интерактивные карты, чтобы сделать знакомство с наследием региона увлекательным, наглядным и доступным каждому.</p>
+            </div>
+        </section>
+
+        <section class="author-section">
+            <div class="visit-card">
+                <div class="author-profile">
+                    <img src="images/author-avatar.png" alt="Аватар автора" class="author-avatar">
+                    <div class="author-details">
+                        <span class="author-badge">О проекте</span>
+                        <h2 class="project-title">
+                            <span id="project-name">...</span> 
+                            <span class="version-tag" id="project-version">...</span>
+                        </h2>
+                        <p class="author-desc">
+                            Автор: <strong id="author-name">...</strong><br>
+                            <span id="author-desc-text">...</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="author-action">
+                    <a href="#" id="github-link" target="_blank" class="btn-github">
+                        <img src="images/github.png" alt="GitHub" class="github-icon">
+                        Перейти в GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="cur-year">...</span> «<span id="footer-site-name">...</span>». Проект создан в целях популяризации культурного наследия Сибири.</p>
+    </footer>
+
+    <script type="module">
+        import { initDataAutofill } from './scripts/configAutofill.js';
+        import { initHeroShader } from './scripts/index-webgl.js';
+
+        initDataAutofill();
+        initHeroShader();
+    </script>
 </body>
 </html>
