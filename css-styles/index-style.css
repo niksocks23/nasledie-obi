@@ -4,12 +4,22 @@
 /* --- БАЗА --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body {
+html, body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #f8fafc; 
   color: #334155;
   line-height: 1.6;
-  overflow-x: hidden;
+  /* ОТКЛЮЧАЕМ ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ НАВСЕГДА */
+  overflow-x: clip; 
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  overflow-x: clip;
+  width: 100%;
 }
 
 /* --- ШАПКА (NAVBAR) --- */
@@ -25,6 +35,7 @@ body {
   z-index: 100;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  width: 100%;
 }
 
 .logo { display: flex; align-items: center; gap: 14px; }
@@ -61,6 +72,7 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   gap: 60px;
+  position: relative;
 }
 
 .hero-content { 
@@ -72,13 +84,14 @@ body {
 /* Шейдер (сияние на фоне) */
 #hero-shader {
   position: absolute;
-  top: -80px; left: -80px; right: -80px; bottom: -80px;
-  width: calc(100% + 160px);
-  height: calc(100% + 160px);
+  top: -40px; left: -40px; right: -40px; bottom: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
   z-index: -1;
   filter: blur(60px);
   border-radius: 50%;
   opacity: 0.6;
+  pointer-events: none;
 }
 
 .badge {
@@ -136,7 +149,7 @@ body {
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3);
 }
 
-/* --- КАРУСЕЛЬ (ПК, КАК В ТВОЕМ ФАЙЛЕ) --- */
+/* --- КАРУСЕЛЬ (ПК) --- */
 .hero-visual { 
   flex: 1; 
   position: relative; 
@@ -158,7 +171,6 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
   background: #fff;
   
-  /* Маска на всю карточку (слева направо) */
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
   mask-image: linear-gradient(to right, transparent 0%, black 40%);
 }
@@ -189,6 +201,7 @@ body {
   border-top: 1px solid #e2e8f0;
   border-bottom: 1px solid #e2e8f0;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .stat-box { text-align: center; }
@@ -196,7 +209,7 @@ body {
 .stat-label { font-size: 15px; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: 12px; display: block; }
 
 /* --- ОБЩИЕ СЕКЦИИ --- */
-.section-container { max-width: 1300px; margin: 0 auto; padding: 120px 50px; }
+.section-container { max-width: 1300px; margin: 0 auto; padding: 120px 50px; width: 100%; }
 .section-container.bg-alt { background: #fff; max-width: 100%; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
 .section-container.bg-alt > * { max-width: 1300px; margin-left: auto; margin-right: auto; }
 
@@ -211,6 +224,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
+  width: 100%;
 }
 
 .feature-card {
@@ -231,7 +245,7 @@ body {
 .feature-card p { color: #475569; font-size: 16px; }
 
 /* --- ВИЗИТКА ПРОЕКТА --- */
-.author-section { padding: 100px 50px 120px; max-width: 1100px; margin: 0 auto; }
+.author-section { padding: 100px 50px 120px; max-width: 1100px; margin: 0 auto; width: 100%; }
 
 .visit-card {
   background: #ffffff;
@@ -310,10 +324,10 @@ body {
 }
 
 /* --- ПОДВАЛ --- */
-footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 15px; }
+footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 15px; width: 100%; }
 
 /* =========================================
-   МОБИЛЬНАЯ ВЕРСИЯ (БЕРЕМ ИЗ ТВОЕГО ФАЙЛА И ДОБАВЛЯЕМ ФИКСЫ)
+   МОБИЛЬНАЯ ВЕРСИЯ 
    ========================================= */
 @media (max-width: 1200px) {
   .hero-content h1 { font-size: 80px; }
@@ -333,23 +347,43 @@ footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px
 }
 
 @media (max-width: 900px) {
+  .navbar {
+    align-items: center; 
+  }
+  
+  .logo {
+    justify-content: center;
+  }
+
   .hero { 
     flex-direction: column; 
     text-align: center; 
-    padding-top: 130px; 
+    padding: 130px 20px 60px; 
     gap: 20px; 
+    width: 100%;
   }
   
   .hero-visual { 
-    order: -1; /* Картинка наверх */
-    flex: none; /* Отменяем растягивание */
+    order: -1; 
+    flex: none; 
     height: 320px; 
     width: 100%; 
     justify-content: center; 
     z-index: 5;
   }
   
-  .hero-content { order: 1; text-align: center; }
+  .hero-content { 
+    order: 1; 
+    text-align: center; 
+    width: 100%;
+  }
+  
+  /* ОБРЕЗАЕМ ШЕЙДЕР НА МОБИЛКАХ, ЧТОБЫ ОН НЕ РАСТЯГИВАЛ СТРАНИЦУ */
+  #hero-shader {
+    top: -20px; left: 0; right: 0; bottom: -20px;
+    width: 100%;
+    height: calc(100% + 40px);
+  }
   
   .hero-content h1 { font-size: 56px; letter-spacing: 0; }
   .hero-content p { font-size: 18px; margin: 0 auto 30px; }
@@ -360,7 +394,6 @@ footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px
     margin-left: 0; 
     border-radius: 24px; 
     
-    /* Убираем тень и меняем маску на снизу-вверх */
     box-shadow: none !important; 
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%) !important;
     mask-image: linear-gradient(to top, transparent 0%, black 40%) !important;
@@ -373,7 +406,7 @@ footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px
   .project-title { justify-content: center; }
   .btn-github { width: 100%; justify-content: center; }
   
-  .section-container { padding: 80px 30px; }
+  .section-container { padding: 80px 20px; }
   .section-container.bg-alt > * { max-width: 100%; }
 }
 
@@ -382,9 +415,19 @@ footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px
 }
 
 @media (max-width: 600px) {
-  .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+  .navbar { 
+    padding: 15px 20px; 
+    flex-direction: column; 
+    gap: 15px; 
+    align-items: center; 
+  }
   .logo span { font-size: 22px; }
-  .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+  .nav-links { 
+    gap: 15px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    width: 100%;
+  }
   .hero-content h1 { font-size: 44px; }
   .hero-content p { font-size: 18px; }
   .hero-visual { height: 250px; }
