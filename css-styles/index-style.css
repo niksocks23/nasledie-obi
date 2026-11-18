@@ -403,7 +403,16 @@ footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px
   
   .visit-card { flex-direction: column; text-align: center; padding: 40px 20px; }
   .author-profile { flex-direction: column; gap: 20px; }
-  .project-title { justify-content: center; }
+  .project-title { 
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 34px; /* <--- ВОТ ЭТА ЦИФРА ОТВЕЧАЕТ ЗА РАЗМЕР */
+  font-weight: 800; 
+  color: #0f172a; 
+  margin-bottom: 12px; 
+  display: flex; 
+  align-items: center; 
+  gap: 16px; 
+}
   .btn-github { width: 100%; justify-content: center; }
   
   .section-container { padding: 80px 20px; }
