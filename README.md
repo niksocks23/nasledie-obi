@@ -1,3 +1,3 @@
 # storymap-web
 
---> https://niksocks23.github.io/nasledie-obi/
+--> https://niksocks23.github.io/nasledie-obirtish-bassein/
