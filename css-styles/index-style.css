@@ -40,15 +40,7 @@ html, body {
 
 .logo { display: flex; align-items: center; gap: 14px; }
 .nav-logo { height: 44px; width: auto; object-fit: contain; }
-.logo span { 
-  font-family: 'Montserrat', sans-serif; 
-  font-size: 20px; /* Сделали чуть меньше, чтобы смотрелось аккуратнее */
-  font-weight: 800; 
-  color: #0f172a; 
-  line-height: 1.1; /* Уменьшили расстояние между строками */
-  white-space: pre-line; /* ВОТ ЭТО заставит браузер читать \n как перенос строки */
-  text-align: left; /* Выравнивание по левому краю рядом с иконкой */
-}
+.logo span { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; color: #0f172a; }
 
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
@@ -429,9 +421,7 @@ footer { text-align: center; padding: 50px; background: #f8fafc; border-top: 1px
     gap: 15px; 
     align-items: center; 
   }
-  .logo span { 
-  font-size: 18px; /* На телефонах делаем шрифт поменьше, чтобы 3 строки влезли идеально */
-}
+  .logo span { font-size: 22px; }
   .nav-links { 
     gap: 15px; 
     flex-wrap: wrap; 
